@@ -1,4 +1,4 @@
-name: 'Package Version Updated'
+name: 'package.json has updated'
 description: 'Indicates when the package.json version has updated in the most recent commit'
 branding:
     icon: 'arrow-up'
