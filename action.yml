@@ -15,4 +15,4 @@ outputs:
         description: 'The current package.json version'
 runs:
     using: 'node16'
-    main: 'index.js'
+    main: 'dist/index.js'
