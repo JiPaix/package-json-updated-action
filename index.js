@@ -8,7 +8,7 @@ const { getOctokit, context } = require('@actions/github');
  * @returns 
  */
 const getPackageJson = async (ref, octokit) => {
-    const packageJSONData = (await octokit.request({
+    const packageJSONData = (await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
         ...context.repo,
         path: process.env['INPUT_PATH'] || 'package.json',
         ref,
@@ -34,8 +34,6 @@ const run = async () => {
 
     const currentPackageJSON = await getPackageJson(currentRef, octokit);
     setOutput('current-package-version', currentPackageJSON.version);
-
-    console.log('HAS UPDATED? ', currentPackageJSON.version !== previousPackageJSON.version)
 
     if (!previousRef) {
         setOutput('has-updated', true);
